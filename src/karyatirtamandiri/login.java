@@ -220,6 +220,7 @@ public class login extends javax.swing.JFrame {
 
             this.rs = stat.executeQuery();
             while(rs.next()){
+                id_user = rs.getString("id_user");
                 nama_user =rs.getString("nama_user");
                 role = rs.getString("role");
             }if(role.equals("")){
@@ -227,7 +228,9 @@ public class login extends javax.swing.JFrame {
             }else{
                 dispose();
                 menu_utama mu =new menu_utama();
+                mu.setId_user(id_user);
                 mu.setNama_user(nama_user);
+                mu.setRole(role);           // menu menyesuaikan role (owner/admin/kasir)
                 mu.setVisible(true);
             }
         }catch(Exception e){

@@ -39,17 +39,12 @@ public class menu_utama extends javax.swing.JFrame {
     }
     public void setRole(String role){
         this.role = role;
-        if(this.role.equals("owner")){
-            dashboard1.setEnabled(true);
-            karyawan1.setEnabled(true);
-            pengemudi1.setEnabled(true);
-            kendaraan1.setEnabled(true);
-        }else if(this.role.equals("admin")){
-            dashboard1.setEnabled(true);
-            karyawan1.setEnabled(true);
-            pengemudi1.setEnabled(true);
-            kendaraan1.setEnabled(true);
-        }
+        // menu khusus owner: Data Karyawan & Data Pengemudi hanya tampil untuk owner
+        boolean isOwner = "owner".equals(this.role);
+        karyawan.setVisible(isOwner);
+        pengemudi.setVisible(isOwner);
+        // muat ulang dashboard sesuai role (owner: menu_dashboard_owner, selain itu: menu_dashboard_karyawan)
+        dashboard1MouseClicked(null);
     }
     
     public void resetMenu(){
@@ -62,6 +57,7 @@ public class menu_utama extends javax.swing.JFrame {
         pemesanan1.setForeground(new Color(9,146,194));
         laporanpemesanan1.setForeground(new Color(9,146,194));
         suratjalan1.setForeground(new Color(9,146,194));
+        profilkeamanan1.setForeground(new Color(9,146,194));
     }
     
     private void updateWaktu() {
@@ -111,6 +107,8 @@ public class menu_utama extends javax.swing.JFrame {
         transaksi1 = new javax.swing.JLabel();
         suratjalan = new asset.PanelShadow();
         suratjalan1 = new javax.swing.JLabel();
+        profilkeamanan = new asset.PanelShadow();
+        profilkeamanan1 = new javax.swing.JLabel();
         pn_kanan = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         pn_header = new javax.swing.JPanel();
@@ -508,6 +506,40 @@ public class menu_utama extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
         );
 
+        profilkeamanan.setBackground(new java.awt.Color(255, 255, 255));
+
+        profilkeamanan1.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        profilkeamanan1.setForeground(new java.awt.Color(9, 146, 194));
+        profilkeamanan1.setText("Profil & Keamanan");
+        profilkeamanan1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profilkeamanan1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                profilkeamanan1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                profilkeamanan1MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout profilkeamananLayout = new javax.swing.GroupLayout(profilkeamanan);
+        profilkeamanan.setLayout(profilkeamananLayout);
+        profilkeamananLayout.setHorizontalGroup(
+            profilkeamananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(profilkeamananLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(profilkeamanan1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        profilkeamananLayout.setVerticalGroup(
+            profilkeamananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, profilkeamananLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(profilkeamanan1)
+                .addGap(14, 14, 14))
+        );
+
         javax.swing.GroupLayout menubarLayout = new javax.swing.GroupLayout(menubar);
         menubar.setLayout(menubarLayout);
         menubarLayout.setHorizontalGroup(
@@ -528,6 +560,7 @@ public class menu_utama extends javax.swing.JFrame {
                             .addComponent(pemesanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(laporanpemesanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(suratjalan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(profilkeamanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(menubarLayout.createSequentialGroup()
                                 .addGroup(menubarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(menubarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -569,6 +602,8 @@ public class menu_utama extends javax.swing.JFrame {
                 .addComponent(transaksi1)
                 .addGap(20, 20, 20)
                 .addComponent(suratjalan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(profilkeamanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -811,8 +846,17 @@ public class menu_utama extends javax.swing.JFrame {
 
     private void dashboard1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboard1MouseClicked
         resetMenu();
-    dashboard1.setForeground(new Color(0, 0, 0));
-    tampilPanel(new menu_dashboard_karyawan(conn));
+        dashboard1.setForeground(new Color(0, 0, 0));
+        pn_kanan.removeAll();
+        // dashboard menyesuaikan role: owner -> menu_dashboard_owner (masih kosong), lainnya -> menu_dashboard_karyawan
+        javax.swing.JPanel dash = "owner".equals(role)
+                ? new menu_dashboard_owner(conn)
+                : new menu_dashboard_karyawan(conn);
+        javax.swing.JScrollPane scroll = new javax.swing.JScrollPane(dash);
+
+        pn_kanan.add(scroll, java.awt.BorderLayout.CENTER);
+        pn_kanan.revalidate();
+        pn_kanan.repaint();
     }//GEN-LAST:event_dashboard1MouseClicked
 
     private void karyawan1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_karyawan1MouseClicked
@@ -1049,6 +1093,26 @@ public class menu_utama extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_suratjalan1MouseExited
 
+    private void profilkeamanan1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profilkeamanan1MouseClicked
+        resetMenu();
+        profilkeamanan1.setForeground(new Color (0,0,0));
+        pn_kanan.removeAll();
+        profil_keamanan profil = new profil_keamanan();
+        javax.swing.JScrollPane scroll = new javax.swing.JScrollPane(profil);
+
+        pn_kanan.add(scroll, java.awt.BorderLayout.CENTER);
+        pn_kanan.revalidate();
+        pn_kanan.repaint();
+    }//GEN-LAST:event_profilkeamanan1MouseClicked
+
+    private void profilkeamanan1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profilkeamanan1MouseEntered
+//        profilkeamanan.setBackground(new Color (220, 220, 220));
+    }//GEN-LAST:event_profilkeamanan1MouseEntered
+
+    private void profilkeamanan1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profilkeamanan1MouseExited
+//        profilkeamanan.setBackground(new Color (255,255,255));
+    }//GEN-LAST:event_profilkeamanan1MouseExited
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new menu_utama().setVisible(true));
     }
@@ -1086,6 +1150,8 @@ public class menu_utama extends javax.swing.JFrame {
     private javax.swing.JPanel pn_kanan;
     private javax.swing.JPanel pn_kiri;
     private javax.swing.JPanel pn_menuheader;
+    private asset.PanelShadow profilkeamanan;
+    private javax.swing.JLabel profilkeamanan1;
     private asset.PanelShadow suratjalan;
     private javax.swing.JLabel suratjalan1;
     private javax.swing.JLabel transaksi;
