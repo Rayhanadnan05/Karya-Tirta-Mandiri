@@ -907,7 +907,7 @@ public class menu_utama extends javax.swing.JFrame {
         resetMenu();
         barang1.setForeground(new Color (0, 0, 0));
         pn_kanan.removeAll();
-        menu_barang m = new menu_barang();
+        menu_mitra m = new menu_mitra();
         javax.swing.JScrollPane scroll = new javax.swing.JScrollPane(m);
 
         pn_kanan.add(scroll, java.awt.BorderLayout.CENTER);

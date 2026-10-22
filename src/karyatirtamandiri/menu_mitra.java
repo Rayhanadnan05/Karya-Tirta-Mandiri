@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JDialog;
 
-public class menu_barang extends javax.swing.JPanel {
+public class menu_mitra extends javax.swing.JPanel {
     
     menu_utama menuutama;
     
@@ -18,7 +18,7 @@ public class menu_barang extends javax.swing.JPanel {
     private ResultSet rs;
     koneksi k = new koneksi();
     
-    public menu_barang() {
+    public menu_mitra() {
         initComponents();
         txt_idbarang.setText(generateIdBarang());
         k.connect();
