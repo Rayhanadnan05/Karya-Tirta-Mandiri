@@ -42,7 +42,7 @@ public class menu_mitra extends javax.swing.JPanel {
         model.setRowCount(0); // kosongkan tabel
 
         try {
-            String sql = "SELECT * FROM tb_barang WHERE id_barang LIKE ? OR nama_supplier LIKE ? OR kategori LIKE ?";
+            String sql = "SELECT * FROM tb_mitra WHERE id_barang LIKE ? OR nama_supplier LIKE ? OR kategori LIKE ?";
             PreparedStatement stat = k.connect().prepareStatement(sql);
 
             stat.setString(1, "%" + tCari.getText() + "%");
@@ -85,7 +85,7 @@ public class menu_mitra extends javax.swing.JPanel {
         model.addColumn("Alamat Supplier");
         tabel_pengemudi1.setModel(model);
         try{
-            this.stat = k.connect().prepareStatement("SELECT * FROM tb_barang");
+            this.stat = k.connect().prepareStatement("SELECT * FROM tb_mitra");
             this.rs = stat.executeQuery();
             while(rs.next()){
                 Object[] data = {
@@ -110,7 +110,7 @@ public class menu_mitra extends javax.swing.JPanel {
     public String generateIdBarang() {
         String idBarang = "BRG001";
         try {
-            String sql = "SELECT id_barang FROM tb_barang ORDER BY id_barang ASC";
+            String sql = "SELECT id_barang FROM tb_mitra ORDER BY id_barang ASC";
             this.stat = k.connect().prepareStatement(sql);
             ResultSet rs = stat.executeQuery();
             int nomor = 1;
@@ -175,7 +175,7 @@ public class menu_mitra extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 21)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Data Barang");
+        jLabel1.setText("Data Mitra");
 
         javax.swing.GroupLayout judulLayout = new javax.swing.GroupLayout(judul);
         judul.setLayout(judulLayout);
@@ -215,13 +215,14 @@ public class menu_mitra extends javax.swing.JPanel {
         data_identitas_pribadi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txt_idbarang.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        txt_idbarang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID Barang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 13))); // NOI18N
+        txt_idbarang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID Mitra", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 13))); // NOI18N
+        txt_idbarang.addActionListener(this::txt_idbarangActionPerformed);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel3.setText("Data Barang");
+        jLabel3.setText("Data Mitra");
 
         txt_namabarang.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        txt_namabarang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nama Barang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 13))); // NOI18N
+        txt_namabarang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nama Mitra", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 13))); // NOI18N
         txt_namabarang.addActionListener(this::txt_namabarangActionPerformed);
 
         txt_deskripsi.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
@@ -466,7 +467,7 @@ public class menu_mitra extends javax.swing.JPanel {
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         String idBarang = generateIdBarang();
         try{
-            this.stat = k.connect().prepareStatement("INSERT INTO `tb_barang` "
+            this.stat = k.connect().prepareStatement("INSERT INTO `tb_mitra` "
                     + "(`id_barang`, `nama_barang`, `kategori`, `deskripsi`, "
                     + "`harga_beli`, `harga_jual`, `satuan`, `nama_supplier`, "
                     + "`alamat_supplier`) "
@@ -504,7 +505,7 @@ public class menu_mitra extends javax.swing.JPanel {
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
         try{
             stat = k.connect().prepareStatement(
-                "UPDATE tb_barang SET " +
+                "UPDATE tb_mitra SET " +
                 "nama_barang=?, kategori=?, deskripsi=?, " +
                 "harga_beli=?, harga_jual=?, satuan=?, nama_supplier=?, " +
                 "alamat_supplier=? " +
@@ -521,7 +522,6 @@ public class menu_mitra extends javax.swing.JPanel {
             stat.setString(9, txt_idbarang.getText());
 
             stat.executeUpdate();
-            stat.executeUpdate();
             refreshTable();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -530,7 +530,7 @@ public class menu_mitra extends javax.swing.JPanel {
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         try{
-            this.stat = k.connect().prepareStatement("DELETE FROM tb_barang WHERE id_barang=?");
+            this.stat = k.connect().prepareStatement("DELETE FROM tb_mitra WHERE id_barang=?");
             stat.setString(1, txt_idbarang.getText());
             stat.executeUpdate();
             refreshTable();
@@ -562,6 +562,10 @@ public class menu_mitra extends javax.swing.JPanel {
     private void tCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tCariActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tCariActionPerformed
+
+    private void txt_idbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idbarangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idbarangActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

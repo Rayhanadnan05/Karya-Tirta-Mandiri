@@ -370,7 +370,7 @@ public class menu_utama extends javax.swing.JFrame {
 
         barang1.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
         barang1.setForeground(new java.awt.Color(9, 146, 194));
-        barang1.setText("Barang");
+        barang1.setText("Mitra");
         barang1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 barang1MouseClicked(evt);
@@ -530,7 +530,7 @@ public class menu_utama extends javax.swing.JFrame {
             .addGroup(profilkeamananLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(profilkeamanan1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         profilkeamananLayout.setVerticalGroup(
             profilkeamananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

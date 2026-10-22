@@ -538,7 +538,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="c2" green="92" red="9" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Barang"/>
+                        <Property name="text" type="java.lang.String" value="Mitra"/>
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="barang1MouseClicked"/>
