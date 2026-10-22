@@ -173,6 +173,13 @@ public class menu_pemesanan extends javax.swing.JPanel {
         btnsimpan = new javax.swing.JButton();
         btntambah = new javax.swing.JButton();
         btnhapus = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtketerangan = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        txtpengiriman = new de.wannawork.jcalendar.JCalendarComboBox();
+        jLabel11 = new javax.swing.JLabel();
         pn_inputdata = new javax.swing.JPanel();
         panelShadow1 = new asset.PanelShadow();
         jLabel2 = new javax.swing.JLabel();
@@ -419,6 +426,66 @@ public class menu_pemesanan extends javax.swing.JPanel {
         btnhapus.setText("-");
         btnhapus.addActionListener(this::btnhapusActionPerformed);
 
+        jPanel1.setBackground(new java.awt.Color(51, 255, 204));
+
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel9.setText("Keterangan");
+
+        txtketerangan.setColumns(20);
+        txtketerangan.setRows(5);
+        txtketerangan.setDoubleBuffered(true);
+        jScrollPane2.setViewportView(txtketerangan);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+
+        jLabel11.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setText("Tanggal Pengiriman");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(txtpengiriman, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtpengiriman, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pn_tampiltransaksiLayout = new javax.swing.GroupLayout(pn_tampiltransaksi);
         pn_tampiltransaksi.setLayout(pn_tampiltransaksiLayout);
         pn_tampiltransaksiLayout.setHorizontalGroup(
@@ -428,10 +495,13 @@ public class menu_pemesanan extends javax.swing.JPanel {
                     .addComponent(pn_transaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pn_tampiltransaksiLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pn_tampiltransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnsimpan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(pn_transaksi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_tampiltransaksiLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btntambah)
@@ -442,11 +512,15 @@ public class menu_pemesanan extends javax.swing.JPanel {
         pn_tampiltransaksiLayout.setVerticalGroup(
             pn_tampiltransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_tampiltransaksiLayout.createSequentialGroup()
-                .addGroup(pn_tampiltransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_tampiltransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pn_tampiltransaksiLayout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addComponent(pn_transaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                         .addComponent(btnsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pn_tampiltransaksiLayout.createSequentialGroup()
                         .addContainerGap()
@@ -455,7 +529,7 @@ public class menu_pemesanan extends javax.swing.JPanel {
                 .addGroup(pn_tampiltransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btntambah)
                     .addComponent(btnhapus))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pn_inputdata.setBackground(new java.awt.Color(255, 255, 255));
@@ -512,7 +586,7 @@ public class menu_pemesanan extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnDataPelanggan))
                             .addComponent(txtnamacustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(773, Short.MAX_VALUE))
                     .addGroup(panelShadow1Layout.createSequentialGroup()
                         .addComponent(txtnotrans, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 504, Short.MAX_VALUE)
@@ -579,22 +653,23 @@ public class menu_pemesanan extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1175, Short.MAX_VALUE)
+            .addGap(0, 1215, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pn_dasar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 664, Short.MAX_VALUE)
+            .addGap(0, 695, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(pn_dasar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 3, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsimpanActionPerformed
         String noFaktur = generateNoFaktur();
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         String no_faktur = noFaktur;
         String tanggal = txttanggal.getText();
@@ -603,16 +678,22 @@ public class menu_pemesanan extends javax.swing.JPanel {
         String bayar = txtbayar.getText();
         String total = txttotal.getText();
         String kembalian = txtkembalian.getText();
+        String keterangan = txtketerangan.getText();
+        String tanggal_pengiriman = sdf.format(txtpengiriman.getCalendar().getTime());
         try {
-            String sql = "INSERT INTO tb_pemesanan VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO tb_pemesanan VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement p = conn.prepareStatement(sql);
             p.setString(1, no_faktur);
             p.setString(2, id_pelanggan);
             p.setString(3, nama_pelanggan);
             p.setString(4, tanggal);
-            p.setString(5, bayar);
-            p.setString(6, total);
-            p.setString(7, kembalian);
+            p.setString(5, tanggal_pengiriman);
+            p.setString(6, keterangan);
+            p.setString(7, bayar);
+            p.setString(8, total);
+            p.setString(9, kembalian);
+            
+            
             p.executeUpdate();
             p.close();
         } catch (Exception e) {
@@ -707,6 +788,8 @@ public class menu_pemesanan extends javax.swing.JPanel {
     private javax.swing.JButton btnsimpan;
     private javax.swing.JButton btntambah;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -714,7 +797,11 @@ public class menu_pemesanan extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private asset.PanelShadow panelShadow1;
     private javax.swing.JPanel pn_dasar;
@@ -726,15 +813,19 @@ public class menu_pemesanan extends javax.swing.JPanel {
     private javax.swing.JPanel pn_yourshopping1;
     private javax.swing.JPanel pn_yourshopping2;
     private javax.swing.JPanel pn_yourshopping3;
+    private javax.swing.JPanel pn_yourshopping4;
     private javax.swing.JTextField txtbayar;
     private javax.swing.JTextField txtharga;
     private javax.swing.JTextField txtidbarang;
     private javax.swing.JTextField txtidcustomer;
     private javax.swing.JTextField txtjumlah;
     private javax.swing.JTextField txtkembalian;
+    private javax.swing.JTextField txtkembalian1;
+    private javax.swing.JTextArea txtketerangan;
     private javax.swing.JTextField txtnamabarang;
     private javax.swing.JTextField txtnamacustomer;
     private javax.swing.JTextField txtnotrans;
+    private de.wannawork.jcalendar.JCalendarComboBox txtpengiriman;
     private javax.swing.JTextField txttanggal;
     private javax.swing.JTextField txttotal;
     // End of variables declaration//GEN-END:variables
